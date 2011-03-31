@@ -1,0 +1,6 @@
+#top #MainMenu li.children > a { background: url(../images/bg-menu-children.gif) no-repeat top right; padding-right: 15px; }
+#top #MainMenu li.children.active { background: url(../../cms/images/mainmenu/hover.gif) #6A7580; }
+#top #MainMenu li.children.active > a { background-position: bottom right; }
+#top #MainMenu li ul { display: none; position: absolute; z-index: 1000; margin-top: 33px; }
+#top #MainMenu ul li { display: inline; float: none; margin: 0; }
+#top #MainMenu ul li a { background: #6A7580; display: block; float: none; padding-right: 30px; }
