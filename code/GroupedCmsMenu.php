@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Decorates left and main to provide a grouped/nested CMS menu.
  *
  * @package silverstripe-groupedcmsmenu
  */
@@ -9,6 +9,7 @@ class GroupedCmsMenu extends LeftAndMainDecorator {
 	protected static $groups = array();
 
 	/**
+	 * Group multiple CMS menu items together under one title.
 	 *
 	 * @param  string $title The group title to display in the main menu
 	 * @param  array $classes The set of menu codes/classes to group.
