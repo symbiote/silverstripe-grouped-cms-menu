@@ -1,6 +1,58 @@
-#top #MainMenu li.children > a { background: url(../images/bg-menu-children.gif) no-repeat top right; padding-right: 15px; }
-#top #MainMenu li.children.active { background: url(../../cms/images/mainmenu/hover.gif) #6A7580; }
-#top #MainMenu li.children.active > a { background-position: bottom right; }
-#top #MainMenu li ul { display: none; position: absolute; z-index: 1000; margin-top: 33px; }
-#top #MainMenu ul li { display: inline; float: none; margin: 0; }
-#top #MainMenu ul li a { background: #6A7580; display: block; float: none; padding-right: 30px; }
+#top #MainMenu li.children > a {
+	background: url(../images/bg-menu-children.gif) no-repeat top right;
+	padding-right: 17px;
+}
+
+#top #MainMenu li.current.children > a {
+	background: url(../images/bg-menu-children-current.gif) no-repeat top right;
+}
+
+#top #MainMenu li.children.current {
+	background: url(../../cms/images/mainmenu/current.gif) #6A7580;
+}
+
+#top #MainMenu li.children:hover {
+	background: url(../../cms/images/mainmenu/hover.gif);
+}
+
+#top #MainMenu li.children.current:hover {
+	background: url(../../cms/images/mainmenu/currentHover.gif);
+}
+
+#top #MainMenu li.children.active > a {
+	background-position: bottom right;
+}
+
+#top #MainMenu li ul {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	margin-top: 33px;
+	border: 1px solid #AAA;
+	border-top: none;
+	margin-left: -1px;
+	box-shadow: 0 5px 5px #AAA;
+	-moz-box-shadow: 0 5px 5px #AAA;
+	-webkit-box-shadow: 0 5px 5px #AAA;
+}
+
+#top #MainMenu ul li {
+	display: inline;
+	float: none;
+	margin: 0;
+}
+
+#top #MainMenu ul li a {
+	background: #6A7580;
+	display: block;
+	float: none;
+	padding-right: 30px;
+}
+
+#top #MainMenu li.current ul a {
+	background: #CCDEF3;
+}
+
+#top #MainMenu ul li.current a {
+	font-weight: bold;
+}
