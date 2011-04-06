@@ -28,7 +28,8 @@ class GroupedCmsMenu extends LeftAndMainDecorator {
 	 * @return DataObjectSet
 	 */
 	public function GroupedMainMenu() {
-		$items = $this->owner->MainMenu();
+		$items  = $this->owner->MainMenu();
+		$result = new DataObjectSet();
 
 		foreach ($items as $item) {
 			if (array_key_exists($item->Code, self::$groups)) {
@@ -38,22 +39,26 @@ class GroupedCmsMenu extends LeftAndMainDecorator {
 			}
 		}
 
-		$items = $items->GroupedBy('Group');
+		foreach ($items->groupBy('Group') as $group => $children) {
+			if (count($children) > 1) {
+				$active = false;
 
-		foreach ($items as $group) {
-			if (count($group->Children) > 1) {
-				foreach ($group->Children as $child) {
-					if ($child->LinkingMode == 'current') {
-						$group->LinkingMode = 'current';
-						break;
-					}
+				foreach ($children as $child) {
+					if ($child->LinkingMode == 'current') $active = true;
 				}
+
+				$result->push(new ArrayData(array(
+					'Group'       => $group,
+					'Link'        => $children->First()->Link,
+					'LinkingMode' => $active ? 'current' : '',
+					'Children'    => $children
+				)));
 			} else {
-				$group->Children = null;
+				$result->push($children->First());
 			}
 		}
 
-		return $items;
+		return $result;
 	}
 
 }
