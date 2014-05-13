@@ -16,7 +16,7 @@ together under a "Content" heading:
 * Andrew Short (<andrew@silverstripe.com.au>)
 
 ## Requirements
-* SilverStripe 2.4+
+* SilverStripe 3.1+
 
 ## Project Links
 * [GitHub Project Page](https://github.com/ajshort/silverstripe-groupedcmsmenu)
