@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Decorates left and main to provide a grouped/nested CMS menu.
  *
  * @package silverstripe-groupedcmsmenu
  */
-class GroupedCmsMenu extends LeftAndMainDecorator {
+class GroupedCmsMenu extends DataExtension {
 
 	protected static $groups = array();
 
@@ -20,25 +21,25 @@ class GroupedCmsMenu extends LeftAndMainDecorator {
 
 	public function init() {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::javascript('groupedcmsmenu/javascript/GroupedCmsMenu.js');
-		Requirements::css('groupedcmsmenu/css/GroupedCmsMenu.css');
+		Requirements::css('silverstripe-groupedcmsmenu/css/GroupedCmsMenu.css');
 	}
 
 	/**
-	 * @return DataObjectSet
+	 * @return ArrayList
 	 */
 	public function GroupedMainMenu() {
-		$items  = $this->owner->MainMenu();
-		$result = new DataObjectSet();
+		$items = new GroupedList($this->owner->MainMenu());
+		$result = new ArrayList();
 
-		foreach ($items as $item) {
-			if (array_key_exists($item->Code, self::$groups)) {
-				$item->Group = self::$groups[$item->Code];
-			} else {
-				$item->Group = $item->Code;
+		if (!empty(self::$groups)) {
+			foreach ($items as $item) {
+				if (array_key_exists($item->Code->RAW(), self::$groups)) {
+					$item->Group = self::$groups[$item->Code->RAW()];
+				} else {
+					$item->Group = $item->Code->RAW();
+				}
 			}
 		}
-
 		foreach ($items->groupBy('Group') as $group => $children) {
 			if (count($children) > 1) {
 				$active = false;
@@ -48,10 +49,10 @@ class GroupedCmsMenu extends LeftAndMainDecorator {
 				}
 
 				$result->push(new ArrayData(array(
-					'Group'       => $group,
-					'Link'        => $children->First()->Link,
+					'Group' => $group,
+					'Link' => $children->First()->Link,
 					'LinkingMode' => $active ? 'current' : '',
-					'Children'    => $children
+					'Children' => $children
 				)));
 			} else {
 				$result->push($children->First());
