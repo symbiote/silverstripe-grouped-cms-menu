@@ -13,7 +13,7 @@ together under a "Content" heading:
 	GroupedCmsMenu::group('Content', array('CMSMain', 'AssetAdmin'));
 
 ## Maintainer Contacts
-* Andrew Short (<andrew@silverstripe.com.au>)
+* Marcus Nyeholt (<marcus@silverstripe.com.au>)
 
 ## Requirements
 * SilverStripe 3.1+
