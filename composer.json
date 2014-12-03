@@ -1,0 +1,22 @@
+{
+    "name": "ajshort/silverstripe-groupedcmsmenu",
+    "description": "Lets you group CMS menu items into dropdown lists.",
+    "type": "silverstripe-module",
+	"homepage": "http://github.com/ajshort/silverstripe-groupedcmsmenu",
+	"keywords": ["silverstripe", "menu", "module", "cms"],
+	"license": "BSD-3-Clause",
+	"authors": [
+    {
+        "name": "Andrew Short",
+        "email": "andrewjshort@gmail.com"
+    }
+    ],
+    "require":
+    {
+        "silverstripe/framework": "~3.1"
+    },
+    "extra": {
+        "installer-name": "groupedcmsmenu"
+    },
+    "target-dir": "groupedcmsmenu"
+}
