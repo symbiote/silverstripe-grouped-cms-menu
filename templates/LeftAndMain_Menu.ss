@@ -6,7 +6,7 @@
 			</a>
 			<span><% if $SiteConfig %>$SiteConfig.Title<% else %>$ApplicationName<% end_if %></span>
 		</div>
-	
+
 		<div class="cms-login-status">
 			<a href="Security/logout" class="logout-link" title="<% _t('LeftAndMain_Menu.ss.LOGOUT','Log out') %>"><% _t('LeftAndMain_Menu_ss.LOGOUT','Log out') %></a>
 			<% with $CurrentMember %>
@@ -19,18 +19,22 @@
 			<% end_with %>
 		</div>
 	</div>
-		
+
 	<div class="cms-panel-content center">
 		<ul class="cms-menu-list">
 		<% loop $GroupedMainMenu %>
-			<li class="$LinkingMode $FirstLast<% if Children %> children <% end_if %><% if $LinkingMode == 'link' %><% else %>opened<% end_if %>" id="Menu-$Code" title="$Title.ATT">
+			<li class="$LinkingMode $FirstLast<% if $Children %> children <% end_if %><% if $LinkingMode == 'link' %><% else %>opened<% end_if %>" id="Menu-$Code" title="$Title.ATT">
 				<a href="$Link" $AttributesHTML>
-					<span class="icon icon-16 icon-{$Code.LowerCase}">&nbsp;</span>
-					<span class="text">$Title</span>
+					<% if $Children %>
+						$Title
+					<% else %>
+						<span class="icon icon-16 icon-{$Code.LowerCase}">&nbsp;</span>
+						<span class="text">$Title</span>
+					<% end_if %>
 				</a>
-				<% if Children %>
+				<% if $Children %>
 					<ul>
-	                    <% loop Children %>
+						<% loop $Children %>
 	                        <li class="$LinkingMode $FirstLast" id="Menu-$Code">
 	                        	<a href="$Link" $AttributesHTML>
 									<span class="icon icon-16 icon-{$Code.LowerCase}">&nbsp;</span>
@@ -44,7 +48,7 @@
 		<% end_loop %>
 		</ul>
 	</div>
-		
+
 	<div class="cms-panel-toggle south">
 		<a class="toggle-expand" href="#"><span>&raquo;</span></a>
 		<a class="toggle-collapse" href="#"><span>&laquo;</span></a>
