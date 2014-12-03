@@ -1,4 +1,4 @@
-# SilverStripe Grouped CMS Menu Module
+# SilverStripe Grouped CMS Menu
 
 This module allows you to group CMS menu items into nested lists which expand
 when hovered over. This is useful when there are so many CMS menu items that
