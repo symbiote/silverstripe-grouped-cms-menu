@@ -1,0 +1,26 @@
+{
+	"name": "silverstripe-australia/groupedcmsmenu",
+	"description": "Allows you to group CMS menu items.",
+	"type": "silverstripe-module",
+	"homepage": "https://github.com/silverstripe-australia/silverstripe-groupedcmsmenu",
+	"keywords": [
+		"silverstripe",
+		"menu",
+		"module",
+		"cms"
+	],
+	"license": "BSD-3-Clause",
+	"authors": [{
+		"name": "Marcus Nyeholt",
+		"email": "marcus@silverstripe.com.au"
+	}],
+	"require": {
+		"silverstripe/framework": "2.4.*",
+		"silverstripe/cms": "2.4.*"
+	},
+	"extra": {
+		"installer-name": "groupedcmsmenu"
+	},
+	"target-dir": "groupedcmsmenu",
+	"minimum-stability": "dev"
+}
