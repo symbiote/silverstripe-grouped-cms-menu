@@ -1,46 +1,37 @@
 <?php
-
 /**
  * Decorates left and main to provide a grouped/nested CMS menu.
  *
  * @package silverstripe-groupedcmsmenu
  */
-class GroupedCmsMenu extends DataExtension {
+class GroupedCmsMenu extends Extension {
 
-	protected static $groups = array();
-
-	/**
-	 * Group multiple CMS menu items together under one title.
-	 *
-	 * @param  string $title The group title to display in the main menu
-	 * @param  array $classes The set of menu codes/classes to group.
-	 */
-	public static function group($title, array $codes) {
-		foreach ($codes as $code) self::$groups[$code] = $title;
-	}
+	private static $menu_groups = array();
 
 	public function init() {
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::css('silverstripe-groupedcmsmenu/css/GroupedCmsMenu.css');
+		//Requirements::javascript('groupedcmsmenu/javascript/GroupedCmsMenu.js');
+		Requirements::css('groupedcmsmenu/css/GroupedCmsMenu.css');
 	}
 
 	/**
-	 * @return ArrayList
+	 * @return DataObjectSet
 	 */
 	public function GroupedMainMenu() {
-		$items = new GroupedList($this->owner->MainMenu());
-		$result = new ArrayList();
+		$items  = $this->owner->MainMenu();
+		$result = ArrayList::create();
+		$groups = Config::inst()->get('LeftAndMain', 'menu_groups');
 
-		if (!empty(self::$groups)) {
-			foreach ($items as $item) {
-				if (array_key_exists($item->Code->RAW(), self::$groups)) {
-					$item->Group = self::$groups[$item->Code->RAW()];
-				} else {
-					$item->Group = $item->Code->RAW();
-				}
+		foreach ($items as $item) {
+			$code = $item->Code->XML();
+			if (array_key_exists($code, $groups)) {
+				$item->Group = $groups[$code];
+			} else {
+				$item->Group = $code;
 			}
 		}
-		foreach ($items->groupBy('Group') as $group => $children) {
+
+		foreach (GroupedList::create($items)->groupBy('Group') as $group => $children) {
+
 			if (count($children) > 1) {
 				$active = false;
 
@@ -48,17 +39,18 @@ class GroupedCmsMenu extends DataExtension {
 					if ($child->LinkingMode == 'current') $active = true;
 				}
 
-				$result->push(new ArrayData(array(
-					'Group' => $group,
-					'Link' => $children->First()->Link,
-					'LinkingMode' => $active ? 'current' : '',
-					'Children' => $children
+				$result->push(ArrayData::create(array(
+					'Title'       	=> $group,
+					'Code'    		=> DBField::create_field('Text', str_replace(' ', '_', $group)),
+					'Link'        	=> $children->First()->Link,
+					'LinkingMode' 	=> $active ? 'current' : '',
+					'Children'    	=> $children
 				)));
 			} else {
 				$result->push($children->First());
 			}
 		}
-
+		
 		return $result;
 	}
 
