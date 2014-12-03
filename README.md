@@ -7,6 +7,7 @@ screen space becomes an issue.
 Previous versions are available through the appropriate branch.
 
 ## Basic Usage
+
 In order to group CMS menu items together, define your menu groups in your config.yml file. 
 example below, CMSMain (Pages) and AssetAdmin (Files &amp; Images) are grouped
 together under a "Content" heading:
@@ -19,11 +20,14 @@ LeftAndMain:
 ```
 
 ## Maintainer Contacts
+
 * Marcus Nyeholt (<marcus@silverstripe.com.au>)
 
 ## Requirements
+
 * SilverStripe 3.0+
 
 ## Project Links
+
 * [GitHub Project Page](https://github.com/ajshort/silverstripe-groupedcmsmenu)
 * [Issue Tracker](https://github.com/ajshort/silverstripe-groupedcmsmenu/issues)
