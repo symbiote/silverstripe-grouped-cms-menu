@@ -15,8 +15,9 @@ together under a "Content" heading:
 ```
 LeftAndMain:
   menu_groups:
-    CMSPagesController: Content
-    AssetAdmin: Content
+    Content:
+      - CMSPagesController
+      - AssetAdmin
 ```
 
 ## Maintainer Contacts
