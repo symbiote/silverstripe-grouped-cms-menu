@@ -19,7 +19,14 @@ class GroupedCmsMenu extends Extension {
 	public function GroupedMainMenu() {
 		$items  = $this->owner->MainMenu();
 		$result = ArrayList::create();
-		$groups = Config::inst()->get('LeftAndMain', 'menu_groups');
+		$groupSettings = Config::inst()->get('LeftAndMain', 'menu_groups');
+		$groups = array();
+
+		foreach ($groupSettings as $key => $menuItems) {
+			foreach ($menuItems as $menuItem ) {
+				$groups[$menuItem] = $key ;
+			}
+		}
 
 		foreach ($items as $item) {
 			$code = $item->Code->XML();
@@ -50,7 +57,7 @@ class GroupedCmsMenu extends Extension {
 				$result->push($children->First());
 			}
 		}
-		
+
 		return $result;
 	}
 
