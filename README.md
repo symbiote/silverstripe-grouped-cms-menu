@@ -30,5 +30,5 @@ LeftAndMain:
 
 ## Project Links
 
-* [GitHub Project Page](https://github.com/ajshort/silverstripe-groupedcmsmenu)
-* [Issue Tracker](https://github.com/ajshort/silverstripe-groupedcmsmenu/issues)
+* [GitHub Project Page](https://github.com/ajshort/silverstripe-grouped-cms-menu)
+* [Issue Tracker](https://github.com/ajshort/silverstripe-grouped-cms-menu/issues)

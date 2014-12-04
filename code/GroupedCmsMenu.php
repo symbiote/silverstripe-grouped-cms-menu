@@ -2,15 +2,15 @@
 /**
  * Decorates left and main to provide a grouped/nested CMS menu.
  *
- * @package silverstripe-groupedcmsmenu
+ * @package silverstripe-grouped-cms-menu
  */
 class GroupedCmsMenu extends Extension {
 
 	private static $menu_groups = array();
 
 	public function init() {
-		//Requirements::javascript('groupedcmsmenu/javascript/GroupedCmsMenu.js');
-		Requirements::css('groupedcmsmenu/css/GroupedCmsMenu.css');
+		//Requirements::javascript('grouped-cms-menu/javascript/GroupedCmsMenu.js');
+		Requirements::css('grouped-cms-menu/css/GroupedCmsMenu.css');
 	}
 
 	/**

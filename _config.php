@@ -1,5 +1,5 @@
 <?php
 /**
- * @package silverstripe-groupedcmsmenu
+ * @package silverstripe-grouped-cms-menu
  */
 
