@@ -26,7 +26,7 @@
 			<li class="$LinkingMode $FirstLast<% if $Children %> children <% end_if %><% if $LinkingMode == 'link' %><% else %>opened<% end_if %>" id="Menu-$Code" title="$Title.ATT">
 				<a href="$Link" $AttributesHTML>
 					<% if $Children %>
-						$Title
+						<span class="grouped-cms-menu text">$Title</span>
 					<% else %>
 						<span class="icon icon-16 icon-{$Code.LowerCase}">&nbsp;</span>
 						<span class="text">$Title</span>
