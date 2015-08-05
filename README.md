@@ -1,22 +1,35 @@
 # SilverStripe Grouped CMS Menu
 
-This module allows you to group CMS menu items into nested lists which expand
-when hovered over. This is useful when there are so many CMS menu items that
-screen space becomes an issue.
+This module allows you to group CMS menu items into nested lists which expand when hovered over. This is useful when 
+there are so many CMS menu items that screen space becomes an issue.
 
 Previous versions are available through the appropriate branch.
 
 ## Basic Usage
 
-In order to group CMS menu items together, define your menu groups in your config.yml file. 
-example below, CMSMain (Pages) and AssetAdmin (Files &amp; Images) are grouped
-together under a "Content" heading:
+In order to group CMS menu items together, define your menu groups in a `config.yml` file.
 
-```
+In the example below, CMSMain (Pages) and AssetAdmin (Files &amp; Images) are grouped
+together under a "Content" heading.
+
+```yml
 LeftAndMain:
   menu_groups:
     Content:
       - CMSPagesController
+      - AssetAdmin
+```
+Each grouped menu will be ordered by the way you configure your YML. If you do not add an item to a grouping, they will 
+appear at the bottom of the menu. You may also choose to "group" items by themselves to make sure that they are ordered 
+correctly in your menu.
+
+```yml
+LeftAndMain:
+  menu_groups:
+    CMSPagesController: []
+    CMSSettingsController: []
+    Other:
+      - ReportAdmin
       - AssetAdmin
 ```
 
