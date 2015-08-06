@@ -20,6 +20,9 @@
 	},
 	"extra": {
 		"installer-name": "grouped-cms-menu"
+		"branch-alias": {
+			"dev-master": "2.2.x-dev"
+		}
 	},
 	"target-dir": "grouped-cms-menu",
 	"minimum-stability": "dev"
