@@ -1,3 +1,7 @@
+---
+Name: grouped-cms-menu
+After: 'framework/*', 'cms/*'
+---
 LeftAndMain:
   extensions:
     - GroupedCmsMenu
