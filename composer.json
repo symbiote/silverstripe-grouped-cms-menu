@@ -19,7 +19,7 @@
 		"silverstripe/cms": "3.1.*"
 	},
 	"extra": {
-		"installer-name": "grouped-cms-menu"
+		"installer-name": "grouped-cms-menu",
 		"branch-alias": {
 			"dev-master": "2.2.x-dev"
 		}
