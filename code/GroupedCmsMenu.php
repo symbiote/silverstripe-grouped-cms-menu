@@ -64,9 +64,10 @@ class GroupedCmsMenu extends Extension {
 					if ($child->LinkingMode == 'current') $active = true;
 				}
 
+				$code = str_replace(' ', '_', $group);
 				$result->push(ArrayData::create(array(
-					'Title' => $group,
-					'Code' => DBField::create_field('Text', str_replace(' ', '_', $group)),
+					'Title' => _t('GroupedCmsMenuLabel.'.$code, $group),
+					'Code' => DBField::create_field('Text', $code),
 					'Link' => $children->First()->Link,
 					'LinkingMode' => $active ? 'current' : '',
 					'Position' => $position,
