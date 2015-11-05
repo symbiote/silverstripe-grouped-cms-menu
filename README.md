@@ -33,6 +33,26 @@ LeftAndMain:
       - AssetAdmin
 ```
 
+## Translating group labels
+
+A group label may be translated by providing a translation key as below (using
+the 'Other' group from above as an example)
+
+```
+langcode:
+  GroupedCmsMenuLabel:
+    Other: 'translated text'
+```
+
+If the group label has spaces, these will be converted to underscores for the 
+key
+
+```
+langcode:
+  GroupedCmsMenuLabel:
+    Other_Label: 'translated text'
+```
+
 ## Maintainer Contacts
 
 * Marcus Nyeholt (<marcus@silverstripe.com.au>)
