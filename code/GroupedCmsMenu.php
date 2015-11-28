@@ -26,41 +26,41 @@ class GroupedCmsMenu extends Extension {
 		$items  = $this->owner->MainMenu();
 		$result = ArrayList::create();
 		$groupSettings = Config::inst()->get('LeftAndMain', 'menu_groups');
-		$groups = array();
+		$itemsToGroup = array();
+		$groupSort = 0;
+		$itemSort = 0;
 
-		$position = 0;
-		foreach ($groupSettings as $key => $menuItems) {
-			$groups[$key] = array(
-				'Code' => $key,
-				'Position' => $position
-			);
-			$position++;
+		foreach ($groupSettings as $groupName => $menuItems) {
 			if (count($menuItems)) {
-				foreach ($menuItems as $menuItem ) {
-					$groups[$menuItem] = array(
-						'Code' => $key,
-						'Position' => $position
+				foreach ($menuItems as $key => $menuItem ) {
+					if (is_numeric($key))
+					$itemsToGroup[$menuItem] = array(
+						'Group' => $groupName,
+						'Priority' => (array_key_exists('priority', $groupSettings[$groupName])) ? $groupSettings[$groupName]['priority'] : $groupSort,
+						'SortOrder' => $itemSort
 					);
-					$position++;
+					$itemSort++;
 				}
+				$groupSort--;
 			}
 		}
 
 		foreach ($items as $item) {
 			$code = $item->Code->XML();
-			if (array_key_exists($code, $groups)) {
-				$item->Group = $groups[$code]['Code'];
-				$item->Position = $groups[$code]['Position'];
+			if (array_key_exists($code, $itemsToGroup)) {
+				$item->Group = $itemsToGroup[$code]['Group'];
+				$item->Priority = $itemsToGroup[$code]['Priority'];
+				$item->SortOrder = $itemsToGroup[$code]['SortOrder'];
 			} else {
 				$item->Group = $code;
-				$item->Position = 9999;
+				$item->Priority = is_numeric($item->MenuItem->priority) ? $item->MenuItem->priority : -1;
+				$item->SortOrder = 0;
 			}
 		}
 
-		foreach (GroupedList::create($items->sort('Position'))->groupBy('Group') as $group => $children) {
+		foreach (GroupedList::create($items->sort(array('Priority'=>'DESC')))->groupBy('Group') as $group => $children) {
 			if (count($children) > 1) {
 				$active = false;
-
 				foreach ($children as $child) {
 					if ($child->LinkingMode == 'current') $active = true;
 				}
@@ -72,8 +72,7 @@ class GroupedCmsMenu extends Extension {
 					'Link' => $children->First()->Link,
 					'Icon' => $icon,
 					'LinkingMode' => $active ? 'current' : '',
-					'Position' => $position,
-					'Children' => $children->sort('Position')
+					'Children' => $children->sort('SortOrder')
 				)));
 			} else {
 				$result->push($children->First());

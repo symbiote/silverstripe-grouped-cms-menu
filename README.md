@@ -19,15 +19,30 @@ LeftAndMain:
       - CMSPagesController
       - AssetAdmin
 ```
-Each grouped menu will be ordered by the way you configure your YML. If you do not add an item to a grouping, they will 
-appear at the bottom of the menu. You may also choose to "group" items by themselves to make sure that they are ordered 
-correctly in your menu.
+
+## Sort order
+
+The items in each grouped menu will follow the order you set in your YML. The groups 
+themselves will be inserted in the menu with a priority of 0, with other menu items 
+appearing above or below depending on their existing priority.
+You can change the priority of a menu group like this:
 
 ```yml
 LeftAndMain:
   menu_groups:
-    CMSPagesController: []
-    CMSSettingsController: []
+    Other:
+      priority: -500
+      - ReportAdmin
+      - SecurityAdmin
+```
+
+Or you can "group" items by themselves to make any menu item follow the order you set in your configuration:
+
+```yml
+LeftAndMain:
+  menu_groups:
+    CMSPagesController:
+      - CMSPagesController
     Other:
       - ReportAdmin
       - AssetAdmin
