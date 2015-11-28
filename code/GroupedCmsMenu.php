@@ -64,12 +64,13 @@ class GroupedCmsMenu extends Extension {
 				foreach ($children as $child) {
 					if ($child->LinkingMode == 'current') $active = true;
 				}
-
+				$icon = array_key_exists('icon', $groupSettings[$group]) ? $groupSettings[$group]['icon'] : false;
 				$code = str_replace(' ', '_', $group);
 				$result->push(ArrayData::create(array(
 					'Title' => _t('GroupedCmsMenuLabel.'.$code, $group),
 					'Code' => DBField::create_field('Text', $code),
 					'Link' => $children->First()->Link,
+					'Icon' => $icon,
 					'LinkingMode' => $active ? 'current' : '',
 					'Position' => $position,
 					'Children' => $children->sort('Position')

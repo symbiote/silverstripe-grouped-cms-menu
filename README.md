@@ -33,6 +33,20 @@ LeftAndMain:
       - AssetAdmin
 ```
 
+## Group icons
+
+You can add a CSS class to groups for the purpose of adding an icon. The class name will be prefixed with 'icon-'.
+In the example below the same icon used for the Pages menu item will be used for the Content group.
+
+```yml
+LeftAndMain:
+  menu_groups:
+    Content:
+      icon: 'cmspagescontroller'
+      - CMSPagesController
+      - AssetAdmin
+```
+
 ## Translating group labels
 
 A group label may be translated by providing a translation key as below (using
