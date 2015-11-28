@@ -12,10 +12,11 @@ class GroupedCmsMenu extends Extension {
 	private static $menu_groups = array();
 
 	/**
-	 * Require in CSS which we need for the menu
+	 * Require in CSS & JS which we need for the menu
 	 */
 	public function init() {
 		Requirements::css('grouped-cms-menu/css/GroupedCmsMenu.css');
+		Requirements::javascript('grouped-cms-menu/javascript/GroupedCmsMenu.js');
 	}
 
 	/**
