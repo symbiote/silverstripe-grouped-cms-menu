@@ -15,14 +15,11 @@
 		"email": "marcus@silverstripe.com.au"
 	}],
 	"require": {
-		"silverstripe/framework": "~3.1",
-		"silverstripe/cms": "~3.1"
+		"silverstripe/framework": "~3.2.0",
+		"silverstripe/cms": "~3.2.0"
 	},
 	"extra": {
-		"installer-name": "grouped-cms-menu",
-		"branch-alias": {
-			"dev-master": "2.2.x-dev"
-		}
+		"installer-name": "grouped-cms-menu"
 	},
 	"target-dir": "grouped-cms-menu",
 	"minimum-stability": "dev"
