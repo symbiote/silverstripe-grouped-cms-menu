@@ -21,7 +21,7 @@
 	"extra": {
 		"installer-name": "grouped-cms-menu",
 		"branch-alias": {
-			"dev-master": "2.2.x-dev"
+			"dev-master": "2.4.x-dev"
 		}
 	},
 	"target-dir": "grouped-cms-menu",
