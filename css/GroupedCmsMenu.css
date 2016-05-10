@@ -22,3 +22,7 @@
 .cms-menu-list li a .no-icon.text {
 	margin-left: 8px;
 }
+
+.cms-menu-list.collapsed li.children ul li a span.text {
+	margin-left: 30px;
+}
