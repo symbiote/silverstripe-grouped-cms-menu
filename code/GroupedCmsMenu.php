@@ -12,6 +12,12 @@ class GroupedCmsMenu extends Extension {
 	private static $menu_groups = array();
 
 	/**
+	 *	When you have larger menus, and/or multiple modules combining to the same menu, this may require something more consistent.
+	 */
+
+	private static $menu_groups_alphabetical_sorting = false;
+
+	/**
 	 * Require in CSS which we need for the menu
 	 */
 	public function init() {
@@ -24,7 +30,8 @@ class GroupedCmsMenu extends Extension {
 	public function GroupedMainMenu() {
 		$items  = $this->owner->MainMenu();
 		$result = ArrayList::create();
-		$groupSettings = Config::inst()->get('LeftAndMain', 'menu_groups');
+		$config = Config::inst();
+		$groupSettings = $config->get('LeftAndMain', 'menu_groups');
 		$itemsToGroup = array();
 		$groupSort = 0;
 		$itemSort = 0;
@@ -71,7 +78,7 @@ class GroupedCmsMenu extends Extension {
 					'Link' => $children->First()->Link,
 					'Icon' => $icon,
 					'LinkingMode' => $active ? 'current' : '',
-					'Children' => $children->sort('SortOrder')
+					'Children' => $config->get('LeftAndMain', 'menu_groups_alphabetical_sorting') ? $children->sort('Title') : $children->sort('SortOrder')
 				)));
 			} else {
 				$result->push($children->First());

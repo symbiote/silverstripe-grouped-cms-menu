@@ -48,6 +48,19 @@ LeftAndMain:
       - AssetAdmin
 ```
 
+When you have larger menus, and/or multiple modules combining to the same menu, this may require something more consistent. In which case, you may sort your grouped menus alphabetically.
+
+```yml
+LeftAndMain:
+  menu_groups:
+    CMSPagesController:
+      - CMSPagesController
+    Other:
+      - ReportAdmin
+      - AssetAdmin
+  menu_groups_alphabetical_sorting: true
+```
+
 ## Group icons
 
 You can add a CSS class to groups for the purpose of adding an icon. The class name will be prefixed with 'icon-'.
