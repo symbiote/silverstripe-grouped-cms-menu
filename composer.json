@@ -23,6 +23,9 @@
 			"dev-master": "3.0.x-dev"
 		}
 	},
+	"replace": {
+		"silverstripe-australia/grouped-cms-menu": "self.version"
+	},
 	"target-dir": "grouped-cms-menu",
 	"minimum-stability": "dev"
 }
