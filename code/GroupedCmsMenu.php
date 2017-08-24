@@ -51,18 +51,19 @@ class GroupedCmsMenu extends Extension {
 			}
 		}
 
-		foreach ($items as $item) {
-			$code = $item->Code->XML();
-			if (array_key_exists($code, $itemsToGroup)) {
-				$item->Group = $itemsToGroup[$code]['Group'];
-				$item->Priority = $itemsToGroup[$code]['Priority'];
-				$item->SortOrder = $itemsToGroup[$code]['SortOrder'];
-			} else {
-				$item->Group = $code;
-				$item->Priority = is_numeric($item->MenuItem->priority) ? $item->MenuItem->priority : -1;
-				$item->SortOrder = 0;
-			}
-		}
+        foreach ($items as $item) {
+            $controller = $item->MenuItem->controller;
+            if (array_key_exists($controller, $itemsToGroup)) {
+                $item->Group = $itemsToGroup[$controller]['Group'];
+                $item->Priority = $itemsToGroup[$controller]['Priority'];
+                $item->SortOrder = $itemsToGroup[$controller]['SortOrder'];
+
+            } else {
+                $item->Group = $controller;
+                $item->Priority = is_numeric($item->MenuItem->priority) ? $item->MenuItem->priority : -1;
+                $item->SortOrder = 0;
+            }
+        }
 
 		foreach (GroupedList::create($items->sort(array('Priority'=>'DESC')))->groupBy('Group') as $group => $children) {
 			if (count($children) > 1) {
