@@ -7,6 +7,7 @@
 
 namespace Symbiote\GroupedCMSMenu\Extensions;
 
+use SilverStripe\Admin\CMSMenu;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
@@ -47,11 +48,12 @@ class GroupedCmsMenu extends Extension {
 		$groupSort = 0;
 		$itemSort = 0;
 
+
 		foreach ($groupSettings as $groupName => $menuItems) {
 			if (count($menuItems)) {
 				foreach ($menuItems as $key => $menuItem ) {
 					if (is_numeric($key))
-					$itemsToGroup[$menuItem] = array(
+					$itemsToGroup[CMSMenu::get_menu_code($menuItem)] = array(
 						'Group' => $groupName,
 						'Priority' => (array_key_exists('priority', $groupSettings[$groupName])) ? $groupSettings[$groupName]['priority'] : $groupSort,
 						'SortOrder' => $itemSort
@@ -62,8 +64,10 @@ class GroupedCmsMenu extends Extension {
 			}
 		}
 
+
+
 		foreach ($items as $item) {
-			$code = $item->Code->XML();
+			$code = $item->Code;
 			if (array_key_exists($code, $itemsToGroup)) {
 				$item->Group = $itemsToGroup[$code]['Group'];
 				$item->Priority = $itemsToGroup[$code]['Priority'];
@@ -74,6 +78,9 @@ class GroupedCmsMenu extends Extension {
 				$item->SortOrder = 0;
 			}
 		}
+
+        $groupedList = GroupedList::create($items->sort('Priority', 'DESC'))->groupBy('Group');
+
 
 		foreach (GroupedList::create($items->sort(array('Priority'=>'DESC')))->groupBy('Group') as $group => $children) {
 			if (count($children) > 1) {

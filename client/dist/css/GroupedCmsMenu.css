@@ -1,29 +1,26 @@
-.cms-menu-list li a .toggle-children {
+.cms-menu__list li a .toggle-children {
     position: absolute;
     right: 0;
     top: 10px;
 }
 
-.cms-menu-list li.children > a {
+.cms-menu__list li a .toggle-children .toggle-children-icon {
+    width: 8px !important;
+    height: 8px !important;
+    background: transparent !important;
+    transform: rotate(45deg);
+    transform-origin: bottom center;
+}
+
+
+.cms-menu__list.opened li a .toggle-children .toggle-children-icon {
+    transform: rotate(-45deg);
+}
+
+.cms-menu__list li.children-menu > a {
     padding-right: 30px;
 }
 
-.cms-menu-list li.children ul li a {
-    padding-left: 15px;
-}
-
-.cms-menu-list li.children li a {
-    font-size: 11px;
-    height: auto;
-    line-height: 16px;
-    min-height: 16px;
-    padding: 7px 10px 7px 40px;
-}
-
-.cms-menu-list li a .no-icon.text {
-    margin-left: 8px;
-}
-
-.cms-menu-list.collapsed li.children ul li a span.text {
-    margin-left: 30px;
+.cms-menu__list li.children-menu ul {
+    padding-left: 0;
 }
