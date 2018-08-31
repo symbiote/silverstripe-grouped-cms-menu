@@ -26,6 +26,10 @@
 	"replace": {
 		"silverstripe-australia/grouped-cms-menu": "self.version"
 	},
-	"target-dir": "grouped-cms-menu",
+    "autoload": {
+        "psr-4": {
+            "Symbiote\\GroupedCMSMenu\\": "src/"
+        }
+    },
 	"minimum-stability": "dev"
 }
