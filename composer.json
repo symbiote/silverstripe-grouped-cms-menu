@@ -18,7 +18,9 @@
 		"silverstripe/cms": "^4.0"
 	},
 	"extra": {
-		"installer-name": "grouped-cms-menu"
+        "expose": [
+            "client/dist"
+        ]
 	},
 	"replace": {
 		"silverstripe-australia/grouped-cms-menu": "self.version"

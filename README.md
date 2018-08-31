@@ -13,11 +13,11 @@ In the example below, CMSMain (Pages) and AssetAdmin (Files &amp; Images) are gr
 together under a "Content" heading.
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
-      - CMSPagesController
-      - AssetAdmin
+      - SilverStripe\CMS\Controllers\CMSPagesController
+      - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 ## Sort order
@@ -28,36 +28,36 @@ appearing above or below depending on their existing priority.
 You can change the priority of a menu group like this:
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Other:
       priority: -500
-      - ReportAdmin
-      - SecurityAdmin
+      - SilverStripe\Reports\ReportAdmin
+      - SilverStripe\Admin\SecurityAdmin
 ```
 
 Or you can "group" items by themselves to make any menu item follow the order you set in your configuration:
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    CMSPagesController:
-      - CMSPagesController
+    SilverStripe\CMS\Controllers\CMSPagesController:
+      - SilverStripe\CMS\Controllers\CMSPagesController
     Other:
-      - ReportAdmin
-      - AssetAdmin
+      - SilverStripe\Reports\ReportAdmin
+      - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 When you have larger menus, and/or multiple modules combining to the same menu, this may require something more consistent. In which case, you may sort your grouped menus alphabetically.
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    CMSPagesController:
-      - CMSPagesController
+    SilverStripe\CMS\Controllers\CMSPagesController:
+      - SilverStripe\CMS\Controllers\CMSPagesController
     Other:
-      - ReportAdmin
-      - AssetAdmin
+      - SilverStripe\Reports\ReportAdmin
+      - SilverStripe\AssetAdmin\Controller\AssetAdmin
   menu_groups_alphabetical_sorting: true
 ```
 
@@ -67,12 +67,12 @@ You can add a CSS class to groups for the purpose of adding an icon. The class n
 In the example below the same icon used for the Pages menu item will be used for the Content group.
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
       icon: 'cmspagescontroller'
-      - CMSPagesController
-      - AssetAdmin
+      - SilverStripe\CMS\Controllers\CMSPagesController
+      - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 ## Translating group labels

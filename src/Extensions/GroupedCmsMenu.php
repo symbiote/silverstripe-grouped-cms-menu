@@ -4,6 +4,17 @@
  *
  * @package grouped-cms-menu
  */
+
+namespace Symbiote\GroupedCMSMenu\Extensions;
+
+use SilverStripe\Admin\LeftAndMain;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Extension;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\FieldType\DBText;
+use SilverStripe\ORM\GroupedList;
+use SilverStripe\View\ArrayData;
+
 class GroupedCmsMenu extends Extension {
 
 	/**
@@ -21,7 +32,7 @@ class GroupedCmsMenu extends Extension {
 	 * Require in CSS which we need for the menu
 	 */
 	public function init() {
-		Requirements::css('grouped-cms-menu/css/GroupedCmsMenu.css');
+		// Requirements::css('grouped-cms-menu/css/GroupedCmsMenu.css');
 	}
 
 	/**
@@ -31,7 +42,7 @@ class GroupedCmsMenu extends Extension {
 		$items  = $this->owner->MainMenu();
 		$result = ArrayList::create();
 		$config = Config::inst();
-		$groupSettings = $config->get('LeftAndMain', 'menu_groups');
+		$groupSettings = $config->get(LeftAndMain::class, 'menu_groups');
 		$itemsToGroup = array();
 		$groupSort = 0;
 		$itemSort = 0;
@@ -74,7 +85,7 @@ class GroupedCmsMenu extends Extension {
 				$code = str_replace(' ', '_', $group);
 				$result->push(ArrayData::create(array(
 					'Title' => _t('GroupedCmsMenuLabel.'.$code, $group),
-					'Code' => DBField::create_field('Text', $code),
+					'Code' => DBText::create_field('Text', $code),
 					'Link' => $children->First()->Link,
 					'Icon' => $icon,
 					'LinkingMode' => $active ? 'current' : '',

@@ -1,7 +1,6 @@
 ---
 Name: grouped-cms-menu
-After: 'framework/*', 'cms/*'
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   extensions:
-    - GroupedCmsMenu
+    - Symbiote\GroupedCMSMenu\Extensions\GroupedCmsMenu
