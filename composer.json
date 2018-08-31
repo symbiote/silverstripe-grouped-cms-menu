@@ -20,7 +20,8 @@
 	"extra": {
         "expose": [
             "client/dist"
-        ]
+        ],
+        "installer-name": "grouped-cms-menu"
 	},
 	"replace": {
 		"silverstripe-australia/grouped-cms-menu": "self.version"
