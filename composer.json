@@ -1,7 +1,7 @@
 {
 	"name": "symbiote/silverstripe-grouped-cms-menu",
 	"description": "Allows you to group CMS menu items.",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"homepage": "https://github.com/symbiote/silverstripe-grouped-cms-menu",
 	"keywords": [
 		"silverstripe",
@@ -15,13 +15,10 @@
 		"email": "marcus@symbiote.com.au"
 	}],
 	"require": {
-		"silverstripe/framework": "^3.2"
+		"silverstripe/cms": "^4.0",
 	},
 	"extra": {
 		"installer-name": "grouped-cms-menu",
-		"branch-alias": {
-			"dev-master": "3.0.x-dev"
-		}
 	},
 	"replace": {
 		"silverstripe-australia/grouped-cms-menu": "self.version"
