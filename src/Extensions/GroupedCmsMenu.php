@@ -50,9 +50,8 @@ class GroupedCmsMenu extends Extension {
 
 
 		foreach ($groupSettings as $groupName => $menuItems) {
-			if (count($menuItems)) {
-				foreach ($menuItems as $key => $menuItem ) {
-					if (is_numeric($key))
+			if (count($menuItems['items'])) {
+				foreach ($menuItems['items'] as $key => $menuItem ) {
 					$itemsToGroup[CMSMenu::get_menu_code($menuItem)] = array(
 						'Group' => $groupName,
 						'Priority' => (array_key_exists('priority', $groupSettings[$groupName])) ? $groupSettings[$groupName]['priority'] : $groupSort,
@@ -79,9 +78,6 @@ class GroupedCmsMenu extends Extension {
 			}
 		}
 
-        $groupedList = GroupedList::create($items->sort('Priority', 'DESC'))->groupBy('Group');
-
-
 		foreach (GroupedList::create($items->sort(array('Priority'=>'DESC')))->groupBy('Group') as $group => $children) {
 			if (count($children) > 1) {
 				$active = false;
@@ -89,12 +85,14 @@ class GroupedCmsMenu extends Extension {
 					if ($child->LinkingMode == 'current') $active = true;
 				}
 				$icon = array_key_exists('icon', $groupSettings[$group]) ? $groupSettings[$group]['icon'] : false;
+                $iconClass = array_key_exists('icon_class', $groupSettings[$group]) ? $groupSettings[$group]['icon_class'] : false;
 				$code = str_replace(' ', '_', $group);
 				$result->push(ArrayData::create(array(
 					'Title' => _t('GroupedCmsMenuLabel.'.$code, $group),
 					'Code' => DBText::create_field('Text', $code),
 					'Link' => $children->First()->Link,
 					'Icon' => $icon,
+					'IconClass' => $iconClass,
 					'LinkingMode' => $active ? 'current' : '',
 					'Children' => $config->get('LeftAndMain', 'menu_groups_alphabetical_sorting') ? $children->sort('Title') : $children->sort('SortOrder')
 				)));

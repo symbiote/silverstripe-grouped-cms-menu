@@ -16,8 +16,9 @@ together under a "Content" heading.
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
-      - SilverStripe\CMS\Controllers\CMSPagesController
-      - SilverStripe\AssetAdmin\Controller\AssetAdmin
+      items:
+          - SilverStripe\CMS\Controllers\CMSPagesController
+          - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 ## Sort order
@@ -32,8 +33,9 @@ SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Other:
       priority: -500
-      - SilverStripe\Reports\ReportAdmin
-      - SilverStripe\Admin\SecurityAdmin
+      items:
+          - SilverStripe\Reports\ReportAdmin
+          - SilverStripe\Admin\SecurityAdmin
 ```
 
 Or you can "group" items by themselves to make any menu item follow the order you set in your configuration:
@@ -42,10 +44,12 @@ Or you can "group" items by themselves to make any menu item follow the order yo
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
     SilverStripe\CMS\Controllers\CMSPagesController:
-      - SilverStripe\CMS\Controllers\CMSPagesController
+      items:
+        - SilverStripe\CMS\Controllers\CMSPagesController
     Other:
-      - SilverStripe\Reports\ReportAdmin
-      - SilverStripe\AssetAdmin\Controller\AssetAdmin
+      items:
+        - SilverStripe\Reports\ReportAdmin
+        - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 When you have larger menus, and/or multiple modules combining to the same menu, this may require something more consistent. In which case, you may sort your grouped menus alphabetically.
@@ -54,10 +58,12 @@ When you have larger menus, and/or multiple modules combining to the same menu, 
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
     SilverStripe\CMS\Controllers\CMSPagesController:
-      - SilverStripe\CMS\Controllers\CMSPagesController
+      items:
+        - SilverStripe\CMS\Controllers\CMSPagesController
     Other:
-      - SilverStripe\Reports\ReportAdmin
-      - SilverStripe\AssetAdmin\Controller\AssetAdmin
+      items:
+        - SilverStripe\Reports\ReportAdmin
+        - SilverStripe\AssetAdmin\Controller\AssetAdmin
   menu_groups_alphabetical_sorting: true
 ```
 
@@ -71,8 +77,9 @@ SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
       icon: 'cmspagescontroller'
-      - SilverStripe\CMS\Controllers\CMSPagesController
-      - SilverStripe\AssetAdmin\Controller\AssetAdmin
+      items:
+        - SilverStripe\CMS\Controllers\CMSPagesController
+        - SilverStripe\AssetAdmin\Controller\AssetAdmin
 ```
 
 ## Translating group labels
