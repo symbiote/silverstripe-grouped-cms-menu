@@ -1,0 +1,24 @@
+.cms-menu__list li ul.group {
+    margin: 0 0 0 15px;
+    padding: 0;
+}
+
+.cms-menu__list li ul.group,
+.cms-menu__list li ul.group li {
+    list-style: none;
+}
+
+.cms-menu__list li ul.group li a {
+    min-height: 35px;
+}
+
+.cms-menu__list li ul.group li a .text {
+    padding-left: 8px;
+}
+
+.cms-menu__list li a .toggle-children-icon,
+.cms-menu__list li a .toggle-children .toggle-children-icon {
+    background-image: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
