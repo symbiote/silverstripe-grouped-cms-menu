@@ -19,7 +19,7 @@
         <% if $Children %>
             <ul class="group">
             <% loop $Children %>
-            <li id="Menu-$Code">
+            <li class="$LinkingMode <% if $LinkingMode == 'link' %><% else %>opened<% end_if %>" id="Menu-$Code" title="$Title.ATT">
                 <a href="$Link" $AttributesHTML>
                     <span class="menu__icon $IconClass"></span>
                     <span class="text">$ChildTitle</span>

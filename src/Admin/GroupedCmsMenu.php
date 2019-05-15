@@ -106,7 +106,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     'IconClass' => $this->getIcon($group, $code),
                     'Code' => DBField::create_field(DBText::class, $code),
                     'Link' => $children->first()->Link,
-                    'LinkingMode' => $active ? 'current' : '',
+                    'LinkingMode' => $active ? 'current' : 'link',
                     'Children' => $this->filterChildren($children),
                 ]));
             } else {
@@ -181,6 +181,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     $menuItem->setField('ChildTitle', $this->getTitle($group, $class));
                     $menuItem->setField('Code', str_replace('\\', '-', $class));
                     $menuItem->setField('IconClass', $this->getIcon($group, $class));
+                    $menuItem->setField('LinkingMode', $child->LinkingMode);
                     $filtered->push($menuItem);
                 }
             }
