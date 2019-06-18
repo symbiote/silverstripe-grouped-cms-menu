@@ -14,12 +14,11 @@ together under a "Content" heading.
 
 ```yml
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
-  Content:
-    children:
-      - SilverStripe-CMS-Controllers-CMSPagesController
-      - SilverStripe-AssetAdmin-Controller-AssetAdmin
+  menu_groups:
+    Content:
+      children:
+        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-AssetAdmin-Controller-AssetAdmin
 ```
 
 ## Sort order
@@ -31,8 +30,6 @@ You can change the priority of a menu group like this:
 
 ```yml
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
   menu_groups:
     Other:
       priority: -500
@@ -45,10 +42,8 @@ Or you can "group" items by themselves to make any menu item follow the order yo
 
 ```yml
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
   menu_groups:
-    CMSPagesController:
+    SilverStripe\CMS\Controllers\CMSPagesController:
       children:
         - SilverStripe-CMS-Controllers-CMSPagesController
     Other:
@@ -61,10 +56,8 @@ When you have larger menus, and/or multiple modules combining to the same menu, 
 
 ```yml
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
   menu_groups:
-    CMSPagesController:
+    SilverStripe\CMS\Controllers\CMSPagesController:
       children:
         - SilverStripe-CMS-Controllers-CMSPagesController
     Other:
@@ -81,14 +74,12 @@ In the example below the same icon used for the Pages menu item will be used for
 
 ```yml
 SilverStripe\Admin\LeftAndMain:
-  extensions:
-    - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
   menu_groups:
     Content:
-      icon: 'page-sitemap'
+      icon: 'sitemap'
       children:
         - SilverStripe-CMS-Controllers-CMSPagesController
-        - SilverStripe\AssetAdmin\Controller\AssetAdmin;
+        - SilverStripe-AssetAdmin-Controller-AssetAdmin;
 ```
 
 ## Translating group labels

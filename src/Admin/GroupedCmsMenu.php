@@ -131,7 +131,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
         $class = str_replace('-', '\\', $code);
 
         if (class_exists($class)) {
-            return (new $class())->config()->get('menu_title');
+            return $class::create()->config()->get('menu_title');
         }
 
         return _t('GroupedCmsMenuLabel.' . $code, $group);
@@ -151,7 +151,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
         $groupSettings = $this->getOwner()->config()->get('menu_groups');
 
         if (class_exists($class)) {
-            return (new $class())->config()->get('menu_icon_class');
+            return $class::create()->config()->get('menu_icon_class');
         }
 
         return 'font-icon-' . (!empty($groupSettings[$group]['icon']) ? $groupSettings[$group]['icon'] : '');

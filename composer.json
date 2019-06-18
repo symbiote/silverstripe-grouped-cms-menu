@@ -17,6 +17,11 @@
             "client"
         ]
     },
+    "autoload": {
+        "psr-4": {
+            "Symbiote\\GroupedCmsMenu\\Admin\\": "src/Admin/"
+        }
+    },
     "replace": {
         "silverstripe-australia/grouped-cms-menu": "self.version"
     },
