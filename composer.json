@@ -5,10 +5,16 @@
     "homepage": "https://github.com/symbiote/silverstripe-grouped-cms-menu",
     "keywords": ["silverstripe", "menu", "module", "cms", "group", "grouped", "grouping"],
     "license": "BSD-3-Clause",
-    "authors": [{
-        "name": "Marcus Nyeholt",
-        "email": "marcus@symbiote.com.au"
-    }],
+    "authors": [
+        {
+            "name": "Marcus Nyeholt",
+            "homepage": "https://github.com/nyeholt"
+        },
+        {
+            "name": "Russ Michell",
+            "homepage": "https://github.com/phptek"
+        }
+    ],
     "require": {
         "silverstripe/admin": "~1.3"
     },

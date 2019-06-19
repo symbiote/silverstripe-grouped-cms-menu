@@ -188,7 +188,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
         }
 
         return $config->get('menu_groups_alphabetical_sorting') ?
-                $filtered->sort('Title') :
+                $filtered->sort('ChildTitle') :
                 $filtered->sort('SortOrder');
     }
 
