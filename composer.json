@@ -1,31 +1,29 @@
 {
-	"name": "symbiote/silverstripe-grouped-cms-menu",
-	"description": "Allows you to group CMS menu items.",
-	"type": "silverstripe-module",
-	"homepage": "https://github.com/symbiote/silverstripe-grouped-cms-menu",
-	"keywords": [
-		"silverstripe",
-		"menu",
-		"module",
-		"cms"
-	],
-	"license": "BSD-3-Clause",
-	"authors": [{
-		"name": "Marcus Nyeholt",
-		"email": "marcus@symbiote.com.au"
-	}],
-	"require": {
-		"silverstripe/framework": "^3.2"
-	},
-	"extra": {
-		"installer-name": "grouped-cms-menu",
-		"branch-alias": {
-			"dev-master": "3.0.x-dev"
-		}
-	},
-	"replace": {
-		"silverstripe-australia/grouped-cms-menu": "self.version"
-	},
-	"target-dir": "grouped-cms-menu",
-	"minimum-stability": "dev"
+    "name": "symbiote/silverstripe-grouped-cms-menu",
+    "description": "Allows you to group CMS menu items.",
+    "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/symbiote/silverstripe-grouped-cms-menu",
+    "keywords": ["silverstripe", "menu", "module", "cms", "group", "grouped", "grouping"],
+    "license": "BSD-3-Clause",
+    "authors": [{
+        "name": "Marcus Nyeholt",
+        "email": "marcus@symbiote.com.au"
+    }],
+    "require": {
+        "silverstripe/admin": "~1.3"
+    },
+    "extra": {
+        "expose": [
+            "client"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Symbiote\\GroupedCmsMenu\\Admin\\": "src/Admin/"
+        }
+    },
+    "replace": {
+        "silverstripe-australia/grouped-cms-menu": "self.version"
+    },
+    "minimum-stability": "dev"
 }

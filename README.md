@@ -13,11 +13,12 @@ In the example below, CMSMain (Pages) and AssetAdmin (Files &amp; Images) are gr
 together under a "Content" heading.
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
-      - CMSPagesController
-      - AssetAdmin
+      children:
+        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-AssetAdmin-Controller-AssetAdmin
 ```
 
 ## Sort order
@@ -28,51 +29,57 @@ appearing above or below depending on their existing priority.
 You can change the priority of a menu group like this:
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Other:
       priority: -500
-      - ReportAdmin
-      - SecurityAdmin
+      children:
+        - SilverStripe-Reports-ReportAdmin
+        - SilverStripe-Admin-SecurityAdmin
 ```
 
 Or you can "group" items by themselves to make any menu item follow the order you set in your configuration:
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    CMSPagesController:
-      - CMSPagesController
+    SilverStripe\CMS\Controllers\CMSPagesController:
+      children:
+        - SilverStripe-CMS-Controllers-CMSPagesController
     Other:
-      - ReportAdmin
-      - AssetAdmin
+      children:
+        - SilverStripe-Reports-ReportAdmin
+        - SilverStripe-Admin-SecurityAdmin
 ```
 
 When you have larger menus, and/or multiple modules combining to the same menu, this may require something more consistent. In which case, you may sort your grouped menus alphabetically.
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    CMSPagesController:
-      - CMSPagesController
+    SilverStripe\CMS\Controllers\CMSPagesController:
+      children:
+        - SilverStripe-CMS-Controllers-CMSPagesController
     Other:
-      - ReportAdmin
-      - AssetAdmin
+      children:
+        - SilverStripe-Reports-ReportAdmin
+        - SilverStripe-Admin-SecurityAdmin
   menu_groups_alphabetical_sorting: true
 ```
 
 ## Group icons
 
-You can add a CSS class to groups for the purpose of adding an icon. The class name will be prefixed with 'icon-'.
-In the example below the same icon used for the Pages menu item will be used for the Content group.
+You can add a CSS class to groups for the purpose of adding an icon. The class name will be prefixed with 'font-icon-'.
+In the example below the same icon used for the Pages menu item will be used for the Content group:
 
 ```yml
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
-      icon: 'cmspagescontroller'
-      - CMSPagesController
-      - AssetAdmin
+      icon: 'sitemap'
+      children:
+        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-AssetAdmin-Controller-AssetAdmin;
 ```
 
 ## Translating group labels
@@ -95,15 +102,15 @@ langcode:
     Other_Label: 'translated text'
 ```
 
-## Maintainer Contacts
+## Maintainer
 
 * Marcus Nyeholt (<marcus@symbiote.com.au>)
 
 ## Requirements
 
-* SilverStripe 3.2+ (See other branches for compatibility with older versions)
+* SilverStripe 4.0+ (See other branches for compatibility with older versions)
 
 ## Project Links
 
-* [GitHub Project Page](https://github.com/ajshort/silverstripe-grouped-cms-menu)
-* [Issue Tracker](https://github.com/ajshort/silverstripe-grouped-cms-menu/issues)
+* [GitHub Project Page](https://github.com/symbiote/silverstripe-grouped-cms-menu)
+* [Issue Tracker](https://github.com/symbiote/silverstripe-grouped-cms-menu/issues)
