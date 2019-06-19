@@ -102,10 +102,6 @@ langcode:
     Other_Label: 'translated text'
 ```
 
-## Maintainer
-
-* Marcus Nyeholt (<marcus@symbiote.com.au>)
-
 ## Requirements
 
 * SilverStripe 4.0+ (See other branches for compatibility with older versions)
@@ -114,3 +110,7 @@ langcode:
 
 * [GitHub Project Page](https://github.com/symbiote/silverstripe-grouped-cms-menu)
 * [Issue Tracker](https://github.com/symbiote/silverstripe-grouped-cms-menu/issues)
+
+## Credits
+
+* A massive thanks to Russ Michell ([phptek](https://github.com/phptek)) for upgrading this module to be SS4 compatible!
