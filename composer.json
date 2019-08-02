@@ -15,7 +15,7 @@
 		"email": "marcus@symbiote.com.au"
 	}],
 	"require": {
-		"silverstripe/cms": "^4.0"
+		 "silverstripe/admin": "~1.3"
 	},
 	"extra": {
         "expose": [
