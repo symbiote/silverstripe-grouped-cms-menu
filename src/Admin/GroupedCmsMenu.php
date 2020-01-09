@@ -2,6 +2,7 @@
 
 namespace Symbiote\GroupedCmsMenu\Admin;
 
+use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Admin\LeftAndMainExtension;
 use SilverStripe\View\Requirements;
 use SilverStripe\ORM\ArrayList;
@@ -131,7 +132,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
         $class = str_replace('-', '\\', $code);
 
         if (class_exists($class)) {
-            return $class::create()->config()->get('menu_title');
+            return LeftAndMain::menu_title($class);
         }
 
         return _t('GroupedCmsMenuLabel.' . $code, $group);
