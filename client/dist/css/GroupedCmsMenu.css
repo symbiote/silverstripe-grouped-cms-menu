@@ -19,6 +19,5 @@
 .cms-menu__list li a .toggle-children-icon,
 .cms-menu__list li a .toggle-children .toggle-children-icon {
     background-image: none !important;
-    width: 0 !important;
-    height: 0 !important;
+    top: 35% !important;
 }
