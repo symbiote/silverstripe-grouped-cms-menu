@@ -1,23 +1,120 @@
-.cms-menu__list li ul.group {
-    margin: 0 0 0 15px;
-    padding: 0;
+/*
+ * 1. Top-level menu item styles
+ */
+
+/* Stop text flowing over the right-hand toggle icon */
+.cms-menu__list li.children > a > .text {
+    margin-right: 34px;
 }
 
-.cms-menu__list li ul.group,
-.cms-menu__list li ul.group li {
+
+/* Update hover styles to match core styles */
+.cms-menu__list li.children.current > a:hover,
+.cms-menu__list li.children.current > a:focus,
+.cms-menu__list li.children.opened a:hover {
+    background-color: #d8e4eb;
+}
+
+/*
+ * 2. Child menu "toggle" styles
+ */
+
+/* Hide default toggle icon - we build our own one with CSS below */
+.cms-menu__list li.children > a > .toggle-children > .toggle-children-icon {
+    display: none !important;
+}
+
+/* Create clickable toggle for child menu */
+.cms-menu__list li.children > a > .toggle-children {
+    position: absolute;
+    top: 50%; right: 8px;
+    width: 26px; height: 26px;
+    border-radius: 2px;
+    margin-top: -1px;
+    padding-top: 0;
+    font-size: 17px;
+    text-align: center;
+    line-height: 26px;
+    transform: translateY(-50%);
+}
+
+/* Renders a down caret using the Silverstripe webfont */
+.cms-menu__list li.children > a > .toggle-children:before {
+    font-family: silverstripe!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    speak: none;
+    line-height: 26px;
+    -webkit-font-smoothing: antialiased;
+    content: '('; /* caret-down-two */
+}
+
+/* Switch to up caret when menu is open */
+.cms-menu__list li.children > a > .toggle-children.opened:before {
+    content: '*'; /* caret-up-two */
+}
+
+/* Highlight the clickable area for the toggle */
+.cms-menu__list li.children > a  > .toggle-children:hover {
+    background: rgba(85, 137, 167, 0.15);
+}
+
+/*
+ * 3. Child menu styles
+ */
+
+/* Inset the child menu */
+.cms-menu__list li.children > ul.group {
+    margin: 0 0 0 15px;
+    padding: 0;
     list-style: none;
 }
 
-.cms-menu__list li ul.group li a {
+/* Reduce min height for child menu items */
+.cms-menu__list li.children > ul.group > li > a {
     min-height: 35px;
 }
 
-.cms-menu__list li ul.group li a .text {
+/* Add some spacing between icon and label */
+.cms-menu__list li.children > ul.group > li > a > .text {
     padding-left: 8px;
 }
 
-.cms-menu__list li a .toggle-children-icon,
-.cms-menu__list li a .toggle-children .toggle-children-icon {
-    background-image: none !important;
-    top: 35% !important;
+/*
+ * 4. Collapsed menu popup styles
+ */
+
+/* Re-position popup child menu */
+.cms-menu__list.collapsed li.children > ul.collapsed-flyout {
+    margin-top: -42px;
+}
+
+/* Hide chevron - the popup itself is an indicator! */
+.cms-menu__list.collapsed li.children.opened > .child-flyout-indicator {
+    display: none !important;
+}
+
+
+/* Hide cloned menu item */
+.cms-menu__list.collapsed li.children.opened > ul.collapsed-flyout > li.clone {
+    display: none !important;
+}
+
+/* Tweak padding for popup menu items */
+.cms-menu__list.collapsed li.children.opened > ul.collapsed-flyout > li > a {
+    padding: 9px 8px;
+}
+
+/* Reposition icons */
+.cms-menu__list.collapsed li.children.opened > ul.collapsed-flyout > li > a > .menu__icon {
+    left: 13px;
+    display: block;
+    margin-top: 0;
+}
+
+/* Add spacing between icon and label */
+.cms-menu__list.collapsed li.children.opened > ul.collapsed-flyout > li > a > span.text {
+    margin-left: 23px;
 }
