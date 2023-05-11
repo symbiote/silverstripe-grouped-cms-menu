@@ -104,7 +104,7 @@ langcode:
 
 ## Requirements
 
-* SilverStripe 4.0+ (See other branches for compatibility with older versions)
+* SilverStripe 5.0+ (See other branches for compatibility with older versions)
 
 ## Project Links
 
