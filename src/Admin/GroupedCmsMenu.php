@@ -93,7 +93,8 @@ class GroupedCmsMenu extends LeftAndMainExtension
         $groupedList = GroupedList::create($items->sort(['Priority' => 'DESC']))->groupBy('Group');
         $menuIconStyling = '';
         foreach ($groupedList as $group => $children) {
-            if (count($children)) {
+            // check if we are just trying to order a menu item
+            if (count($children) && $group !== $children[0]->Code) {
                 $active = false;
 
                 foreach ($children as $child) {
@@ -208,6 +209,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     $menuItem->setField('IconClass', $iconClass);
                     $menuItem->setField('HasCSSIcon', strtolower(Convert::raw2htmlname(str_replace('\\', '-', $class))));
                     $menuItem->setField('LinkingMode', $child->LinkingMode);
+                    $menuItem->setField('SortOrder', $child->SortOrder);
                     $filtered->push($menuItem);
                 }
             }
@@ -221,5 +223,4 @@ class GroupedCmsMenu extends LeftAndMainExtension
             $filtered->sort('ChildTitle') :
             $filtered->sort('SortOrder');
     }
-
 }
