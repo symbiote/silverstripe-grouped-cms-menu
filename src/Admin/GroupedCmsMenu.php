@@ -93,7 +93,8 @@ class GroupedCmsMenu extends LeftAndMainExtension
         $groupedList = GroupedList::create($items->sort(['Priority' => 'DESC']))->groupBy('Group');
         $menuIconStyling = '';
         foreach ($groupedList as $group => $children) {
-            if (count($children)) {
+            // check if we are just trying to order a menu item
+            if (count($children) && $group !== $children[0]->Code) {
                 $active = false;
 
                 foreach ($children as $child) {
@@ -221,5 +222,4 @@ class GroupedCmsMenu extends LeftAndMainExtension
             $filtered->sort('ChildTitle') :
             $filtered->sort('SortOrder');
     }
-
 }
