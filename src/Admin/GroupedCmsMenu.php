@@ -209,6 +209,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     $menuItem->setField('IconClass', $iconClass);
                     $menuItem->setField('HasCSSIcon', strtolower(Convert::raw2htmlname(str_replace('\\', '-', $class))));
                     $menuItem->setField('LinkingMode', $child->LinkingMode);
+                    $menuItem->setField('SortOrder', $child->SortOrder);
                     $filtered->push($menuItem);
                 }
             }
