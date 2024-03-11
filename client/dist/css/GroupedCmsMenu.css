@@ -22,6 +22,6 @@
     top: 35% !important;
 }
 
-.cms-menu__list li.current > a .toggle-children .toggle-children-icon{
+.cms-menu__list li.current > a .toggle-children .toggle-children-icon {
     height: 8px;
 }
