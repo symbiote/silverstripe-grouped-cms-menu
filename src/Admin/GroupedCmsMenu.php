@@ -3,22 +3,22 @@
 namespace Symbiote\GroupedCmsMenu\Admin;
 
 use SilverStripe\Admin\LeftAndMain;
-use SilverStripe\Admin\LeftAndMainExtension;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Extension;
 use SilverStripe\View\Requirements;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\GroupedList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\List\GroupedList;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBText;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 
 /**
  * Decorates {@link LeftAndMain} to provide a grouped/nested CMS menu.
  *
  * @package grouped-cms-menu
  */
-class GroupedCmsMenu extends LeftAndMainExtension
+class GroupedCmsMenu extends Extension
 {
 
     /**
@@ -171,7 +171,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
             return $class::create()->config()->get('menu_icon_class');
         }
 
-        return 'font-icon-' . (!empty($groupSettings[$group]['icon']) ? $groupSettings[$group]['icon'] : '');
+        return (!empty($groupSettings[$group]['icon']) ? $groupSettings[$group]['icon'] : '');
     }
 
     /**
