@@ -1,23 +1,60 @@
-.cms-menu__list li ul.group {
-    margin: 0 0 0 15px;
-    padding: 0;
+.cms-menu__list li.children > a {
+    padding-right: 24px;
+    position: relative;
+}
+.cms-menu__list li.children > a:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 6px solid #497792; /* The triangle color */
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
 }
 
-.cms-menu__list li ul.group,
-.cms-menu__list li ul.group li {
+.cms-menu__list li.children > a:hover:after,
+.cms-menu__list li.children > a:focus:after,
+.cms-menu__list li.children.current > a:after,
+.cms-menu__list li.children:hover > a:after {
+    border-top: none;
+}
+
+.cms-menu__list li ul.group {
+    margin: 0 0 0 8px;
+    padding: 0;
+    display: none;
     list-style: none;
 }
 
-.cms-menu__list li ul.group li a {
-    min-height: 35px;
-}
-
 .cms-menu__list li ul.group li a .text {
-    padding-left: 8px;
+  padding-left: 8px;
 }
 
-.cms-menu__list li a .toggle-children-icon,
-.cms-menu__list li a .toggle-children .toggle-children-icon {
-    background-image: none !important;
-    top: 35% !important;
+.cms-menu__list li:hover ul.group,
+.cms-menu__list li.current ul.group,
+.cms-menu__list li.opened ul.group {
+  display: block;
+}
+
+.cms-menu__list li > a:hover + ul.group,
+.cms-menu__list li > a:active + ul.group,
+.cms-menu__list li > a:focus + ul.group {
+    display: block;
+}
+
+.cms-menu__list li {
+  background: #d8e4eb;
+}
+
+.cms-menu__list li.opened ul.group li a {
+    background: none;
+}
+.cms-menu__list li.opened ul.group li:hover,
+.cms-menu__list li.opened > a:active ul.group li {
+    background: #d8e4eb;
 }
