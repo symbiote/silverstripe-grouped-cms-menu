@@ -32,10 +32,22 @@
     margin-left: 8px;
     right: 12px;
     top: 50%;
-    transform: translateY(-50%);
+    /* Closed group: triangle points right (rotated), see li.opened rule below */
+    transform: translateY(-50%) rotate(-90deg);
+    transition: transform .15s ease-in-out;
     border-top: 6px solid #497792; /* The triangle color */
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
+}
+
+/* Open group: triangle points down */
+.cms-menu__list li.children.opened > a:after {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.cms-menu__list li.children > a {
+    cursor: pointer;
+    user-select: none;
 }
 
 .cms-menu__list li ul.group {
@@ -67,11 +79,16 @@
     top: 35% !important;
 }
 
-.cms-menu__list li:hover ul.group li,
+/* Sub items are shown only for opened groups (click, see GroupedCmsMenu.js), not on hover */
 .cms-menu__list li.opened ul.group li {
     min-height: 35px;
     height: unset;
     overflow: visible;
+}
+
+.cms-menu__list li.opened ul.group li {
+    /* Untermenü hell wie der Gruppeneintrag, dunkle Schrift bleibt lesbar */
+    background: #e9f0f4;
 }
 
 .cms-menu__list li.opened ul.group li a {

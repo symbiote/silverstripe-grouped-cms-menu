@@ -1,7 +1,9 @@
 # SilverStripe Grouped CMS Menu
 
-This module allows you to group CMS menu items into nested lists which expand when hovered over. This is useful when 
-there are so many CMS menu items that screen space becomes an issue.
+This module allows you to group CMS menu items into nested lists which expand when clicked (accordion: opening a group closes the others,
+the group containing the active menu item is open on load). This is useful when 
+there are so many CMS menu items that screen space becomes an issue. When the CMS menu is collapsed
+(icons only), a click on a group opens its first item, as before.
 
 Previous versions are available through the appropriate branch.
 
