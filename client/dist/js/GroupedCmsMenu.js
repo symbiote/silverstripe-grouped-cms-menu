@@ -56,6 +56,15 @@
                 setGroupOpen($group, open);
 
                 return false;
+            },
+            // A link only reacts to Enter by itself; a group also opens with the space bar
+            onkeydown: function (e) {
+                if (e.which === 32) {
+                    e.preventDefault();
+                    this.trigger('click');
+                    return false;
+                }
+                return this._super(e);
             }
         });
     });
