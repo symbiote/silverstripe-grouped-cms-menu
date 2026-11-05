@@ -1,5 +1,8 @@
 .cms-menu {
     width: 220px !important;
+    /* Sub item colours: the CMS menu background of the Silverstripe admin and a slightly darker hover/current tone */
+    --grouped-menu-sub-bg: #e9f0f4;
+    --grouped-menu-sub-active-bg: #d8e4eb;
 }
 
 .cms-menu__list li.opened {
@@ -88,7 +91,7 @@
 
 .cms-menu__list li.opened ul.group li {
     /* Untermenü hell wie der Gruppeneintrag, dunkle Schrift bleibt lesbar */
-    background: #e9f0f4;
+    background: var(--grouped-menu-sub-bg);
 }
 
 .cms-menu__list li.opened ul.group li a {
@@ -97,9 +100,77 @@
 
 .cms-menu__list li.opened ul.group li:hover,
 .cms-menu__list li.opened ul.group li.current {
-    background: #d8e4eb;
+    background: var(--grouped-menu-sub-active-bg);
 }
 
 .cms-menu__list li{
     background: #005a93;
+}
+
+/* Collapsed menu (60px): icons in one vertical line, small arrow with a gap to the right edge */
+.cms-menu.collapsed .cms-menu__list > li > a {
+    padding-left: 16px;
+    padding-right: 18px;
+}
+
+.cms-menu.collapsed .cms-menu__list > li > a .menu__icon {
+    left: 16px;
+}
+
+/* The arrow always points right, sub items open as a flyout (see GroupedCmsMenu.js) */
+.cms-menu.collapsed .cms-menu__list li.children > a:after {
+    left: auto;
+    right: 7px;
+    margin-left: 0;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-left-width: 4px;
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+/* The flyout is fixed but stays in the stacking context of the menu, so the menu is lifted while it is open:
+   above the content area (core collapsed menu: 50), below Bootstrap modals and their backdrop (1040/1050) */
+.cms-menu.collapsed.has-flyout {
+    z-index: 1000;
+}
+
+/* Flyout of the collapsed menu, same look as the expanded sub items. GroupedCmsMenu.js also closes it
+   on expand; the .collapsed prefix keeps it out of the expanded menu either way and outranks the core
+   ".cms-menu.collapsed .cms-menu__list .opened a" indent. */
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group {
+    display: block;
+    position: fixed;
+    width: 220px; /* same as the expanded menu */
+    max-height: 100vh;
+    overflow-y: auto;
+    margin: 0;
+    background: var(--grouped-menu-sub-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group li {
+    width: 100%;
+    height: auto;
+    min-height: 35px;
+    overflow: visible;
+    background: var(--grouped-menu-sub-bg);
+}
+
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group li:hover,
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group li.current {
+    background: var(--grouped-menu-sub-active-bg);
+}
+
+/* Same indent in every group (the core uses 15px for the opened group, 18px for the others) */
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group li a {
+    padding-left: 18px;
+    background: none;
+}
+
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group li a .menu__icon {
+    left: 18px;
+}
+
+.cms-menu.collapsed .cms-menu__list li.flyout > ul.group span.text {
+    display: block;
 }
