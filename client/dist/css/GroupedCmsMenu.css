@@ -1,16 +1,29 @@
 .cms-menu {
     width: 220px !important;
     /* Sub item colours: the CMS menu background of the Silverstripe admin and a slightly darker hover/current tone */
-    --grouped-menu-sub-bg: #e9f0f4;
+    --grouped-menu-sub-bg: #f5fcff;
     --grouped-menu-sub-active-bg: #d8e4eb;
+}
+
+.cms-menu__list {
+    background: rgb(205, 215, 233);
+    padding-bottom: 1px;
+}
+
+.cms-menu__list > li {
+    margin-top: 1px;
+}
+
+.cms-menu__list > li:first-child {
+    margin-top: 0;
 }
 
 .cms-menu__list li.opened {
     border-left: none;
 }
 
-.cms-menu__list li.opened a {
-    padding-left: 8px;
+.cms-menu__list li.current > a {
+    border-left: 3px solid #497792;
 }
 
 .cms-menu__list li.opened a .menu__icon {
@@ -54,8 +67,8 @@
 }
 
 .cms-menu__list li ul.group {
-    margin: 0 0 0 10px;
     padding: 0;
+    display: none;
 }
 
 .cms-menu__list li ul.group,
@@ -64,8 +77,6 @@
 }
 
 .cms-menu__list li ul.group li {
-    height: 0;
-    overflow: hidden;
 }
 
 .cms-menu__list li ul.group li a {
@@ -82,11 +93,13 @@
     top: 35% !important;
 }
 
+.cms-menu__list li.opened ul.group {
+    display: block;
+}
+
 /* Sub items are shown only for opened groups (click, see GroupedCmsMenu.js), not on hover */
 .cms-menu__list li.opened ul.group li {
     min-height: 35px;
-    height: unset;
-    overflow: visible;
 }
 
 .cms-menu__list li.opened ul.group li {
@@ -101,10 +114,6 @@
 .cms-menu__list li.opened ul.group li:hover,
 .cms-menu__list li.opened ul.group li.current {
     background: var(--grouped-menu-sub-active-bg);
-}
-
-.cms-menu__list li{
-    background: #005a93;
 }
 
 /* Collapsed menu (60px): icons in one vertical line, small arrow with a gap to the right edge */
