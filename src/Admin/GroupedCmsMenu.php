@@ -116,7 +116,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                 $result->push(ArrayData::create([
                     'Title'       => $this->getTitle($group, $code),
                     'IconClass'   => $iconClass,
-                    'HasCSSIcon'  => strtolower($code),
+                    'HasCSSIcon'  => false,
                     'Code'        => DBField::create_field(DBText::class, $code),
                     'Link'        => $children->first()->Link,
                     'LinkingMode' => $active ? 'current' : 'link',
@@ -171,7 +171,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
             return $class::create()->config()->get('menu_icon_class');
         }
 
-        return 'font-icon-' . (!empty($groupSettings[$group]['icon']) ? $groupSettings[$group]['icon'] : '');
+        return (!empty($groupSettings[$group]['icon']) ? 'font-icon-' . $groupSettings[$group]['icon'] : '');
     }
 
     /**
@@ -221,5 +221,4 @@ class GroupedCmsMenu extends LeftAndMainExtension
             $filtered->sort('ChildTitle') :
             $filtered->sort('SortOrder');
     }
-
 }

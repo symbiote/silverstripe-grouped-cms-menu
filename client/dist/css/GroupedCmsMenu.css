@@ -16,8 +16,95 @@
     padding-left: 8px;
 }
 
-.cms-menu__list li a .toggle-children-icon,
-.cms-menu__list li a .toggle-children .toggle-children-icon {
-    background-image: none !important;
-    top: 35% !important;
+.cms-menu__list .children > a > .text {
+    margin-right: 34px;
+}
+
+.cms-menu__list li.children.current > a,
+.cms-menu__list li.children.opened > a,
+.cms-menu__list li.children.opened a:hover {
+    background-color: #d8e4eb;
+}
+
+.cms-menu__list li ul.group {
+    margin-left: 0;
+    padding-left: 8px;
+}
+
+.cms-menu__list li ul.group li a {
+    height: auto !important;
+}
+
+.cms-menu__list .children a .toggle-children {
+    position: absolute;
+    border-radius: 2px;
+    margin-top: -1px;
+    padding-top: 0;
+    font-size: 17px;
+    text-align: center;
+    line-height: 26px;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+}
+
+.cms-menu__list .children a .toggle-children:hover {
+    background: rgba(85, 137, 167, 0.15);
+}
+
+.cms-menu__list .children a .toggle-children:before {
+    font-family: silverstripe!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    speak: none;
+    line-height: 26px;
+    -webkit-font-smoothing: antialiased;
+    content: '(';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cms-menu__list .children a .toggle-children.opened:before {
+    content: '*';
+}
+
+.cms-menu__list li.children ul.collapsed-flyout {
+    margin-top: -52px;
+}
+
+.cms-menu__list.collapsed .opened .child-flyout-indicator {
+    display: none !important;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li.clone {
+    display: none !important;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li a {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li a .menu__icon {
+    left: 13px;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li a span.text {
+    margin-left: 23px;
+}
+
+.cms-menu__list .child-flyout-indicator {
+    display: none !important;
+}
+
+.cms-menu__list .toggle-children-icon {
+    display: none !important;
 }
