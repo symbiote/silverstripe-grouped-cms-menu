@@ -5,13 +5,13 @@ namespace Symbiote\GroupedCmsMenu\Admin;
 use SilverStripe\Admin\LeftAndMain;
 use SilverStripe\Core\Convert;
 use SilverStripe\Core\Extension;
-use SilverStripe\View\Requirements;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Model\List\ArrayList;
 use SilverStripe\Model\List\GroupedList;
-use SilverStripe\Model\ArrayData;
+use SilverStripe\Model\List\SS_List;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBText;
-use SilverStripe\Model\List\SS_List;
+use SilverStripe\View\Requirements;
 
 /**
  * Decorates {@link LeftAndMain} to provide a grouped/nested CMS menu.
@@ -21,18 +21,13 @@ use SilverStripe\Model\List\SS_List;
 class GroupedCmsMenu extends Extension
 {
 
-    /**
-     * @var array
-     */
-    private static $menu_groups = [];
+    private static array $menu_groups = [];
 
     /**
      * When you have larger menus, and/or multiple modules combining to the same menu,
      * this may require something more consistent.
-     *
-     * @var boolean
      */
-    private static $menu_groups_alphabetical_sorting = false;
+    private static bool $menu_groups_alphabetical_sorting = false;
 
     /**
      * @return ArrayList
@@ -52,7 +47,7 @@ class GroupedCmsMenu extends Extension
                 continue;
             }
 
-            foreach ($menuItems['children'] as $key => $menuItem) {
+            foreach ($menuItems['children'] as $menuItem) {
                 $itemsToGroup[$menuItem] = [
                     'Group'     => $groupName,
                     'Priority'  => (array_key_exists('priority', $groupSettings[$groupName])) ? $groupSettings[$groupName]['priority'] : $groupSort,
@@ -166,7 +161,6 @@ class GroupedCmsMenu extends Extension
      * Ensure what we pass to $Children in the include template is accurate. We only
      * want to indicate to it that children should be shown groups declared in config.
      *
-     * @param SS_List $children
      * @return ArrayList
      */
     public function filterChildren(SS_List $children)
@@ -209,5 +203,4 @@ class GroupedCmsMenu extends Extension
             $filtered->sort('ChildTitle') :
             $filtered->sort('SortOrder');
     }
-
 }
