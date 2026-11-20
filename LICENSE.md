@@ -1,6 +1,6 @@
 # SilverStripe Grouped CMS Menu Module License
 
-Copyright &copy; 20010, Symbiote PTY LTD - www.symbiote.com.au
+Copyright &copy; 2010, Symbiote PTY LTD - www.symbiote.com.au
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
