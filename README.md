@@ -19,7 +19,7 @@ SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
       children:
-        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-CMS-Controllers-CMSMain
         - SilverStripe-AssetAdmin-Controller-AssetAdmin
 ```
 
@@ -45,9 +45,9 @@ Or you can "group" items by themselves to make any menu item follow the order yo
 ```yml
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    SilverStripe\CMS\Controllers\CMSPagesController:
+    SilverStripe\CMS\Controllers\CMSMain:
       children:
-        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-CMS-Controllers-CMSMain
     Other:
       children:
         - SilverStripe-Reports-ReportAdmin
@@ -59,9 +59,9 @@ When you have larger menus, and/or multiple modules combining to the same menu, 
 ```yml
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
-    SilverStripe\CMS\Controllers\CMSPagesController:
+    SilverStripe\CMS\Controllers\CMSMain:
       children:
-        - SilverStripe-CMS-Controllers-CMSPagesController
+        - SilverStripe-CMS-Controllers-CMSMain
     Other:
       children:
         - SilverStripe-Reports-ReportAdmin
@@ -78,10 +78,10 @@ In the example below the same icon used for the Pages menu item will be used for
 SilverStripe\Admin\LeftAndMain:
   menu_groups:
     Content:
-      icon: 'sitemap'
+      icon: 'font-icon-sitemap'
       children:
-        - SilverStripe-CMS-Controllers-CMSPagesController
-        - SilverStripe-AssetAdmin-Controller-AssetAdmin;
+        - SilverStripe-CMS-Controllers-CMSMain
+        - SilverStripe-AssetAdmin-Controller-AssetAdmin
 ```
 
 ## Translating group labels
@@ -106,7 +106,7 @@ langcode:
 
 ## Requirements
 
-* SilverStripe 4+ and 5+ (See other branches for compatibility with older versions)
+* SilverStripe 6+ (See other branches for compatibility with older versions)
 
 ## Project Links
 
@@ -116,3 +116,5 @@ langcode:
 ## Credits
 
 * A massive thanks to Russ Michell ([phptek](https://github.com/phptek)) for upgrading this module to be SS4 compatible!
+* Thanks to Kevin Gröger for upgrading this module to Silverstripe 5.
+* Thanks to [Andreas Seifert](https://github.com/AndreasSeifert) for upgrading this module to Silverstripe 6.
