@@ -6,3 +6,7 @@ After: 'framework/*, cms/*'
 SilverStripe\Admin\LeftAndMain:
   extensions:
     - Symbiote\GroupedCmsMenu\Admin\GroupedCmsMenu
+  extra_requirements_css:
+    - 'symbiote/silverstripe-grouped-cms-menu: client/dist/css/GroupedCmsMenu.css'
+  extra_requirements_javascript:
+    - 'symbiote/silverstripe-grouped-cms-menu: client/dist/js/GroupedCmsMenu.js'
